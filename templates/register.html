@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<div class = "container my-4 " style = "width: 38rem">
+<div class = "my-4 text-center" style = "width: 38rem;">
+    <div style=" margin:2rem; width: 28rem; " method ='POST'>
+    <div class= "card-body">
+        <form action="#" method = "post">
+          {% csrf_token %}
+          <label  class="form-label">First Name</label>
+          <input type="text" class="form-control" required name="first_name" placeholder="Enter your first name here">
+
+          <label  class="form-label">Last name</label>
+          <input type="text" class="form-control" required name="last_name" placeholder="Enter your last name here">
+
+          <label  class="form-label">Email</label>
+          <input type="text" class="form-control" required name="email" placeholder="Enter your E-mail here">
+
+          <label  class="form-label">Password</label>
+          <input type="password" class="form-control" required name="password" placeholder="Enter your password here">
+
+          <br>
+          <div class = 'col-md-12 text-center'>
+              <input type = 'submit' class="btn btn-primary" value ='register'/>
+            <br>
+
+            <p class = 'nav-link disabled text-center'>Already have an account?</p>
+          <a  class = "btn btn-primary" href="{% url 'login' %}" >sign in</a>
+          </div>
+        </form>
+</div>
+    </div>
+</div>
+</div>
+{% endblock %}

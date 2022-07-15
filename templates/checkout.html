@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main1.css' %}">
+<center>
+<div class="box-element my-4 mx-4 text-left bg-primary back-to-prod" style = "width: 76rem;">
+	<center>
+		<a  class="btn btn-outline-dark " href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+	</center>
+	
+	<hr>
+	<h3>Order Summary</h3>
+	<hr>
+	<div class="cart-row">
+		<div style="flex:2"><strong>Image</strong></div>
+		<div style="flex:2"><strong>Item</strong></div>
+		<div style="flex:1"><strong>Price</strong></div>
+		<div style="flex:1"><strong>Quantity</strong></div>
+	</div>
+	{% for item in items %}
+	<div class="cart-row">
+		<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+		<div style="flex:2"><p>{{item.product.name}}</p></div>
+		<div style="flex:1"><p>${{item.product.price}}</p></div>
+		<div style="flex:1"><p>x{{item.quantity}}</p></div>
+	</div>
+	{% endfor %}
+	<h5>Items:   {{order.get_cart_quantity}}</h5>
+	<h5>Total:   ${{order.get_cart_total}}</h5>
+</div>
+</center>
+{% endblock %}
